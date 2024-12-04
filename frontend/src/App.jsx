@@ -1,6 +1,5 @@
 import TeamList from "../team/TeamList";
 import BButton from "./shared/BButton"
-import AddTeamForm from "./components/addcar/AddTeamForm"
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
