@@ -64,7 +64,10 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        localStorage.setItem("data", JSON.stringify(data));   
+        //set auth token in local storage
+        localStorage.setItem("authToken", data.authToken);
+        //set login user in local storage
+        localStorage.setItem("loginUser", data.user.name);   
         alert("Login successful");
         handleClearInput();
         navigate("/");
