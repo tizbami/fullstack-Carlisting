@@ -51,10 +51,11 @@ function Register() {
   // handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // send data to backend: http://localhost:3000/api/auth/signup
+    // fetch data from api
+    const apiUrl = import.meta.env.VITE_API_URL;
     try {
       const response = await fetch(
-        "http://localhost:3000/api/auth/signup",
+        `${apiUrl}/api/auth/signup`,
         {
           method: "POST",
           headers: {
@@ -63,11 +64,13 @@ function Register() {
           body: JSON.stringify(formData),
         }
       );
-      const data = await response.json();
-      console.log(data);
-      alert("Registration successful");
-      handleClearInput();
-      navigate("/login");
+      if (response.ok) 
+        handleClearInput();
+        response.json().then((data) => {
+          console.log(data);
+          navigate("/login");
+        });
+      
     } catch (error) {
       console.log(error);
     }
