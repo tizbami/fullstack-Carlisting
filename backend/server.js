@@ -7,11 +7,12 @@ const authRoutes = require("./routes/authRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const cors = require("cors");
 
+
 // create server
 connectDB();
 const app = express();
 app.use(cors());
-
+app.use(express.urlencoded({ extended: true }))
 
 
 // middleware
